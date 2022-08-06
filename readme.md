@@ -2,4 +2,4 @@
 Hlockey web interface.
 
 ## Credits
-See the [Gemfile](Gemfile) for libraries in use
+* See the [Gemfile](Gemfile) for libraries in use

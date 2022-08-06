@@ -10,14 +10,8 @@ gem 'rails', '~> 7.0.3'
 # Hlockey
 gem 'hlockey'
 
-# CSS / JS compressor
-gem 'yui-compressor'
-
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
@@ -66,6 +60,17 @@ group :development do
 
   # Favicon generator
   gem 'rails_real_favicon'
+
+  # Development database
+  gem 'sqlite3', '~> 1.4'
+end
+
+group :production do
+  # CSS / JS compressor
+  gem 'yui-compressor'
+
+  # Production database
+  gem 'pg', '~> 1.4.2'
 end
 
 group :test do
