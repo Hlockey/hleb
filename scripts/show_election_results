@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+ENV['RAILS_ENV'] = 'production'
+
+require_relative('../config/environment')
+
+def vote_amt(n, t = nil)
+  "(#{n} vote#{'s' unless n == 1}#{" / #{t} total" if t})"
+end
+
+def item(name, *vote_amt_opts)
+  "#{name} #{vote_amt(*vote_amt_opts)}"
+end
+
+def put_header(name, votes)
+  puts("\n  #{item(name, votes.count)}")
+end
+
+def put_result(name, count, votes = nil)
+  puts("    #{item(name, count, votes&.count)}")
+end
+
+def max_attr(votes, attr, array)
+  return [array.sample, 0] if votes.count.zero?
+
+  m = votes.select(attr).group(attr).count.max
+  m[0] = array[m[0]]
+
+  m
+end
+
+votes = Vote.where(created_at: $league.start_time..Time.now)
+
+puts("Season #{Hlockey::VERSION} Election Results\nvotes cast: #{votes.count}")
+
+b_v, t_v, c_v = Array.new(ELECTION.length) { |c_idx| votes.where(category: c_idx) }
+
+put_header('Bribery', b_v)
+bribe = max_attr(b_v, :option, ELECTION[:Bribery].keys)
+put_result("Winning bribe: #{bribe.first}", bribe.last)
+
+put_header('Treasure', t_v)
+ELECTION[:Treasure].each_key.with_index do |treasure, o_idx|
+  treasure_v = t_v.where(option: o_idx)
+  team = max_attr(treasure_v, :team, $league.teams)
+  put_result("#{treasure}: #{team.first}", team.last, treasure_v)
+end
+
+put_header('Coaching', c_v)
+$league.teams.each_with_index do |team, t_idx|
+  team_v = c_v.where(team: t_idx)
+  coaching = max_attr(team_v, :option, ELECTION[:Coaching].keys)
+  put_result("#{team}: #{coaching.first}", coaching.last, team_v)
+end

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hlockey</title>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+    <%= render('layouts/favicon') %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag('application', 'data-turbo-track': 'reload') %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav id = "pages">
+      <%= link_to('home', root_path) %>
+      <%= link_to('league', league_games_path) %>
+      <%= link_to('election', votes_path) %>
+    </nav>
+
+    <nav>
+      <% if Current.friend %>
+        <%= link_to('manage account', account_path) %>
+        <%= link_to('sign out', sign_out_path) %>
+      <% else %>
+        <%= link_to('sign in', sign_in_path) %>
+        <%= link_to('sign up', sign_up_path) %>
+      <% end %>
+    </nav>
+
+    <div id = "content">
+      <p class = "notice"><%= notice %></p>
+      <p class = "alert"><%= alert %></p>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

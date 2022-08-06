@@ -1,0 +1,34 @@
+table {
+  border: var(--border);
+  border-collapse: collapse;
+  justify-content: center;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+tr {
+  width: 100%;
+}
+th, td {
+  padding: 0.5rem;
+}
+
+td:nth-child(odd), table.player th:nth-child(odd) {
+  text-align: left;
+}
+
+td:nth-child(even), table.player th:nth-child(even) {
+  text-align: right;
+}
+
+.divisions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#roster {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 33.33333%));
+  justify-content: center;
+}

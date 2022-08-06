@@ -1,0 +1,13 @@
+<h1>Sign up</h1>
+
+<%= form_with(model: @friend, url: sign_up_path) do |form| %>
+  <%= render(partial: 'forms/errors', locals: { object: form.object }) %>
+  <%= render(partial: 'forms/account_info', locals: { form: form }) %>
+  <div>
+    <%= form.label(:password_confirmation) %>
+    <%= form.password_field(:password_confirmation, required: true) %>
+  </div>
+  <h2>Team</h2>
+  <%= render(partial: 'forms/team_select', locals: { form: form }) %>
+  <%= form.submit('sign up') %>
+<% end %>

@@ -1,0 +1,9 @@
+<%= in_application_layout do %>
+  <h1>League</h1>
+  <p class = "center"><b><%= Hlockey::Messages.SeasonDay($league.day) %></b></p>
+  <div class = "center">
+    <%= link_to('games', league_games_path, class: 'button') %>
+    <%= link_to('standings', league_standings_path, class: 'button') %>
+  </div>
+  <%= yield %>
+<% end %>

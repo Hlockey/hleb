@@ -1,0 +1,123 @@
+/*= require_tree .
+ *= require_self */
+
+:root {
+  --border: 1px solid var(--secondary);
+  --font: "Atkinson Hyperlegible", sans-serif;
+  --primary: #111;
+  --secondary: #eee;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ah-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ah.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+  background-color: var(--primary);
+  color: var(--secondary);
+  font-family: var(--font);
+  margin: 0;
+}
+
+#content {
+  margin: 1rem 5%;
+}
+
+h1, nav a, .center, .notice, .alert {
+  text-align: center;
+}
+
+nav {
+  border-bottom: var(--border);
+  display: flex;
+}
+
+nav a {
+  width: 100%;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+#pages {
+  background-color: inherit;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+div, li {
+  margin-bottom: 1rem;
+}
+
+a, button, input {
+  background-color: inherit;
+  color: inherit;
+}
+
+button, a.button, input {
+  appearance: none;
+  border: var(--border);
+  font-family: var(--font);
+  font-size: 1rem;
+}
+
+button, a.button, input[type="submit"] {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+}
+
+a:hover, button:hover, input[type = "submit"]:hover {
+  background-color: var(--secondary);
+  color: var(--primary);
+  cursor: pointer;
+}
+
+input[type = "text"], input[type = "password"] {
+  display: block;
+  width: 10rem;
+}
+
+input[type = "text"]:focus, input[type = "password"]:focus {
+  width: 15rem;
+}
+
+.selectable_option {
+  display: inline-block;
+  margin-bottom: 0;
+  width: 14em;
+}
+
+.selectable_option input, svg {
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+}
+
+.selectable_option input {
+  border-radius: 50%;
+}
+
+.selectable_option input:hover, .selectable_option label:hover {
+  cursor: pointer;
+}
+
+.selectable_option input:checked {
+  background-image: radial-gradient(var(--secondary) 40%, transparent calc(40% + 1px));
+}

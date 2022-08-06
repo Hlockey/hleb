@@ -1,0 +1,14 @@
+<h1>Hlockey</h1>
+
+<h2>Info</h2>
+<% @info.each do |title, text| %>
+  <h3><%= title %></h3>
+  <p><%= raw(text) %></p>
+<% end %>
+
+<h2>Links</h2>
+<ul>
+  <% @links.each do |site, link| %>
+    <li><%= link_to(site, link) %></li>
+  <% end %>
+</ul>

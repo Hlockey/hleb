@@ -1,0 +1,21 @@
+.game {
+  border: var(--border);
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.scoreboard {
+  display: flex;
+  width: 25rem;
+}
+
+.scoreboard div {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.scoreboard div:first-child {
+  border-right: var(--border);
+}

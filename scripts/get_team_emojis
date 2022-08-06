@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require('bundler')
+Bundler.setup
+require('hlockey')
+require('open-uri')
+
+Hlockey.load_data('league').last.values.flatten.each do |team|
+  File.write(
+    File.expand_path("../app/assets/images/twemojis/#{team}.svg", __dir__),
+    URI.open("https://twemoji.maxcdn.com/v/latest/svg/#{team.emoji.ord.to_s(16)}.svg")
+      .read
+  )
+end

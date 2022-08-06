@@ -1,0 +1,8 @@
+<div>
+  <% $league.teams.each_with_index do |team, i| %>
+    <div class = "selectable_option">
+      <%= form.radio_button(:team, i) %>
+      <%= form.label("team_#{i}", emoji_team(team)) %>
+    </div>
+  <% end %>
+</div>

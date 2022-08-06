@@ -1,0 +1,12 @@
+<h1>Sign in</h1>
+
+<%= form_with(url: sign_in_path, scope: :friend) do |form| %>
+  <%= render(partial: 'forms/account_info', locals: { form: form }) %>
+  <div>
+    <div class = "selectable_option">
+      <%= form.check_box(:remember) %>
+      <%= form.label(:remember) %>
+    </div>
+  </div>
+  <%= form.submit('sign in') %>
+<% end %>

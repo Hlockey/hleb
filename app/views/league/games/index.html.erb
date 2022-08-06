@@ -1,0 +1,26 @@
+<h1>Games</h1>
+
+<% if @games.any? %>
+  <% @games.each_with_index do |game, i| %>
+    <div class = "game">
+      <div class = "scoreboard">
+        <div>
+          <b><%= emoji_team(game.home) %></b>
+          <br />
+          <%= game.score[:home] %>
+        </div>
+        <div>
+          <b><%= team_emoji(game.away) %></b>
+          <br />
+          <%= game.score[:away] %>
+        </div>
+      </div>
+
+      <p><%= game.in_progress ? 'game in progress' : 'game over' %></p>
+
+      <%= link_to('watch', league_game_path(i), class: 'button') %>
+    </div>
+  <% end %>
+<% else %>
+  <p class = "center"><%= Hlockey::Messages.NoGames %></p>
+<% end %>

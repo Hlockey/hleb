@@ -1,0 +1,30 @@
+<h1>Manage Account</h1>
+
+<h2>Settings</h2>
+<%= form_with(model: Current.friend, url: account_path, method: :put) do |form| %>
+  <%= render(partial: 'forms/errors', locals: { object: form.object }) %>
+  <div>
+    <%= form.label(:username) %>
+    <%= form.text_field(:username) %>
+  </div>
+  <h3>Team</h3>
+  <%= render(partial: 'forms/team_select', locals: { form: form }) %>
+  <%= form.submit('save') %>
+<% end %>
+
+<h2>Leave</h2>
+<% if @active_sessions.any? %>
+  <h3>Current sign ins</h3>
+  <ol>
+    <% @active_sessions.each do |a_s| %>
+      <li>
+        started at
+        <%= time_tag(a_s.created_at, a_s.created_at.strftime('%H:%M, %d %B (%Z)')) %>
+        <%= button_to('delete', active_session_path(a_s), method: :delete) %>
+      </li>
+    <% end %>
+  </ol>
+  <%= button_to('delete all', active_session_path('all'), method: :delete) %>
+<% end %>
+<h3>Permanent</h3>
+<%= button_to('delete account', account_path, method: :delete) %>

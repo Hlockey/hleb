@@ -1,0 +1,19 @@
+<h1><%= emoji_team(@team) %></h1>
+
+<div id = "roster">
+  <% @team.roster.each do |pos, player| %>
+    <table class = "player">
+      <th><%= Hlockey.pos_name(pos) %></th>
+      <th><%= player %></th>
+      <% player.stats.each do |name, value| %>
+        <tr>
+          <td><%= name.capitalize %></td>
+          <td><%= value.round(1) %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
+
+<p><b>wins</b>: <%= @team.wins %></p>
+<p><b>losses</b>: <%= @team.losses %></p>

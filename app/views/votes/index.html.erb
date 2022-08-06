@@ -1,0 +1,25 @@
+<h1>Election</h1>
+
+<% if Current.friend %>
+  <p class = "center"><b>your votes</b>: <%= Current.friend.votes %></p>
+<% end %>
+
+<% ELECTION.each_with_index do |(category, options), c_num| %>
+  <h2><%= category %></h2>
+
+  <ul>
+    <% options.each_with_index do |(name, desc), o_num| %>
+      <li>
+        <b><%= name %></b>:
+        <%= desc %>
+        <%= button_to('vote', votes_path, params: {
+          vote: {
+            category: c_num,
+            option: o_num,
+            team: Current.friend&.team
+          }
+        }) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

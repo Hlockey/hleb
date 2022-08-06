@@ -1,0 +1,16 @@
+<div class = "divisions">
+  <% divisions.each do |name, teams| %>
+    <table>
+      <th colspan = 2><%= name %></th>
+      <% teams.each do |team| %>
+        <tr>
+          <td>
+            <%= link_to(emoji_team(team),
+                        league_standing_path($league.teams.index(team))) %>
+          </td>
+          <td><%= team.wins %>-<%= team.losses %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

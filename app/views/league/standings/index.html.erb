@@ -1,0 +1,10 @@
+<h1>Standings</h1>
+
+<% if @champion_team %>
+  <p class = "center"><%= Hlockey::Messages.SeasonChampion(@champion_team) %></p>
+<% elsif @playoff_teams %>
+  <%= render_divisions({ Playoffs: @playoff_teams }) %>
+  <br />
+<% end %>
+
+<%= render_divisions(@divisions) %>
