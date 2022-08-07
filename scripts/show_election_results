@@ -24,7 +24,7 @@ end
 def max_attr(votes, attr, array)
   return [array.sample, 0] if votes.count.zero?
 
-  m = votes.select(attr).group(attr).count.max
+  m = votes.select(attr).group(attr).count.max_by { |k, v| v }
   m[0] = array[m[0]]
 
   m
