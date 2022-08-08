@@ -34,7 +34,7 @@ module Hleb
             game.stream[stream_idxs[i]..].each do |message|
               broadcast_append_to("game_#{i}",
                                   partial: 'league/games/message',
-                                  locals: { message:, scroll: true },
+                                  locals: { message: message, scroll: true },
                                   target: 'messages')
             end
 
