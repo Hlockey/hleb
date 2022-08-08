@@ -66,8 +66,11 @@ group :development do
 end
 
 group :production do
-  # CSS / JS compressor
-  gem 'yui-compressor'
+  # CSS compressor
+  gem 'sass-rails'
+
+  # JS compressor
+  gem 'terser'
 
   # Production database
   gem 'pg', '~> 1.4.2'
