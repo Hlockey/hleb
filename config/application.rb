@@ -32,10 +32,10 @@ module Hleb
             next unless stream_idxs[i] < game.stream.length
 
             game.stream[stream_idxs[i]..].each do |message|
-              broadcast_append_to("game_#{i}",
-                                  partial: 'league/games/message',
-                                  locals: { message: message, scroll: true },
-                                  target: 'messages')
+              broadcast_prepend_to("game_#{i}",
+                                   partial: 'league/games/message',
+                                   locals: { message: message },
+                                   target: 'messages')
             end
 
             stream_idxs[i] = game.stream.length
