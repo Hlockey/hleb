@@ -5,8 +5,12 @@
       <% teams.each do |team| %>
         <tr>
           <td>
-            <%= link_to(emoji_team(team),
-                        league_standing_path($league.teams.index(team))) %>
+            <%= if link
+                  link_to(emoji_team(team),
+                          league_standing_path($league.teams.index(team)))
+                else
+                  emoji_team(team)
+                end %>
           </td>
           <td><%= team.wins %>-<%= team.losses %></td>
         </tr>
