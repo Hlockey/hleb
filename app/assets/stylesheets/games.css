@@ -19,3 +19,7 @@
 .scoreboard div:first-child {
   border-right: var(--border);
 }
+
+#messages p:first-child {
+  font-weight: bold;
+}

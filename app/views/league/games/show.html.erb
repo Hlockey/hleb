@@ -1,10 +1,15 @@
 <h1><%= emoji_team(@game.home) %> vs <%= team_emoji(@game.away) %></h1>
 
+<%= link_to('go to beginning', '##', class: 'button') %>
+
 <div id = "messages">
-  <% @game.stream.each do |message| %>
-    <%= render(partial: 'league/games/message',
-               locals: { message: message, scroll: false }) %>
+  <% @game.stream.reverse.each do |message| %>
+    <%= render(partial: 'league/games/message', locals: { message: message }) %>
   <% end %>
 </div>
 
+<%= link_to('go to end', '#', class: 'button') %>
+
 <%= turbo_stream_from("game_#{@id}") if @game.in_progress %>
+
+<a id = "#"></a>
